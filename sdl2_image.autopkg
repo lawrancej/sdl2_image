@@ -1,0 +1,42 @@
+nuget {
+    nuspec {
+        id: sdl2_image;
+        version : 2.0.0;
+        title: SDL2_image;
+        authors: {Sam Lantinga, Mattias Engdegård};
+        owners: {Joseph Lawrance};
+        licenseUrl: "http://www.libsdl.org/license.php";
+        projectUrl: "http://www.libsdl.org/index.php";
+        iconUrl: "http://www.libsdl.org/media/SDL_logo.png";
+        requireLicenseAcceptance:false;
+        summary: "SDL_image is an image file loading library. ";
+        description: "It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV";
+        releaseNotes: Release of SDL2_image 2.0.0 libraries.;
+        copyright: Copyright 2013;
+        tags: { SDL2, SDL2_image, native, CoApp };
+    };
+    files {
+        #defines {
+            SDL2_image_SDK = SDL2_image-2.0.0;
+        }
+        include: { "${SDL2_image_SDK}\include\*" };
+        [x86] {
+            lib: ${SDL2_image_SDK}\lib\x86\*.lib;
+            bin: ${SDL2_image_SDK}\lib\x86\*.dll;
+        }
+        [x64] {
+            lib: ${SDL2_image_SDK}\lib\x64\*.lib;
+            bin: ${SDL2_image_SDK}\lib\x64\*.dll;
+        }
+    }
+
+    dependencies {
+        packages : {
+            sdl2/2.0.1
+        };
+    }
+
+    targets {
+        Defines += HAS_SDL2_IMAGE;
+    }
+}
